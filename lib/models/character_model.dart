@@ -2,6 +2,30 @@ enum Gender { male, female, genderless, unknown }
 
 enum Status { alive, dead, unknown }
 
+class CharacterData {
+  final int count;
+  final int pages;
+  final String next;
+  final List<CharacterModel> allCharacter;
+
+  CharacterData({
+    required this.count,
+    required this.pages,
+    required this.allCharacter,
+    required this.next,
+  });
+  factory CharacterData.fromJson(Map<String, dynamic> json) {
+    return CharacterData(
+      count: json['info']['count'] ?? 0,
+      pages: json['info']['pages'] ?? 0,
+      allCharacter: (json['info']['result'] as List)
+          .map((item) => CharacterModel.fromJson(item))
+          .toList(),
+      next: json['next'] ?? '',
+    );
+  }
+}
+
 class CharacterModel {
   final int id;
   final String name;
