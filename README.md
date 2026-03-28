@@ -18,7 +18,7 @@ A high-performance, **Glassmorphic** Flutter application that allows users to ex
 ## 🛠️ Architecture Decisions
 
 ### **State Management: GetX**
-We utilized **GetX** for its high-performance dependency injection and reactive state handling.
+Utilized **GetX** for its high-performance dependency injection and reactive state handling.
 * **Why?** It allows us to update the UI (like the Favorites icon or Reset button) across multiple screens simultaneously without the complexity of `Provider` or the boilerplate of `Bloc`.
 * **Navigation**: GetX handles our snackbars and glassy dialogs cleanly without needing `BuildContext` inside the controller logic.
 
@@ -31,12 +31,6 @@ We utilized **GetX** for its high-performance dependency injection and reactive 
 
 ## 🚀 Setup Instructions
 
-### **1. Environment Setup**
-* Flutter SDK: `^3.0.0`
-* Dart SDK: `^3.0.0`
-
-### **2. Installation**
-```bash
 # Clone the repository
 git clone [https://github.com/your-username/character_explorer.git](https://github.com/your-username/character_explorer.git)
 
@@ -45,3 +39,21 @@ cd character_explorer
 
 # Install dependencies
 flutter pub get
+
+# Generate Hive Adapters
+Since the project uses hive_generator, run this to generate the .g.dart files:
+flutter pub run build_runner build --delete-conflicting-outputs
+
+## 🔗 Screenshots
+<p align="center">
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot01.png" width="24%" alt="Screenshot 1" />
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot02.png" width="24%" alt="Screenshot 2" />
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot03.png" width="24%" alt="Screenshot 3" />
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot04.png" width="24%" alt="Screenshot 4" />
+</p>
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot05.png" width="24%" alt="Screenshot 5" />
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot06.png" width="24%" alt="Screenshot 6" />
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot07.png" width="24%" alt="Screenshot 7" />
+</p>
