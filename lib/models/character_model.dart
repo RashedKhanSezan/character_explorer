@@ -18,7 +18,7 @@ class CharacterData {
     return CharacterData(
       count: json['info']['count'] ?? 0,
       pages: json['info']['pages'] ?? 0,
-      allCharacter: (json['info']['result'] as List)
+      allCharacter: (json['results'] as List)
           .map((item) => CharacterModel.fromJson(item))
           .toList(),
       next: json['next'] ?? '',

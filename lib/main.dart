@@ -1,3 +1,4 @@
+import 'package:character_explorer/screens/character_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,6 +11,9 @@ class CharacterExplorer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(debugShowCheckedModeBanner: false);
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: CharacterScreen(),
+    );
   }
 }
