@@ -65,7 +65,7 @@ class CharacterDetailScreen extends StatelessWidget {
           (c) => c.id == model.id,
           orElse: () => model,
         );
-        
+
         return Stack(
           children: [
             Positioned(
@@ -131,7 +131,7 @@ class CharacterDetailScreen extends StatelessWidget {
                                   status: latestModel.status.name,
                                 ),
 
-                                Spacer(flex: 2),
+                                Spacer(flex: 3),
 
                                 ResetButton(characterId: model.id.toString()),
                               ],
