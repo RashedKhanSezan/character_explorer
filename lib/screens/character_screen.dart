@@ -29,7 +29,7 @@ class CharacterScreen extends StatelessWidget {
         ),
         title: Obx(
           () => Text(
-            controller.currentNavIndex.value == 1 ? "FAVORITES" : 'RICK & Morty VERSE',
+            controller.currentNavIndex.value == 1 ? "FAVORITES" : 'RICK & MORTY VERSE',
             style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w900,
