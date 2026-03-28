@@ -131,7 +131,7 @@ class CharacterDetailScreen extends StatelessWidget {
                                   status: latestModel.status.name,
                                 ),
 
-                                Spacer(flex: 3),
+                                Spacer(flex: 1),
 
                                 ResetButton(characterId: model.id.toString()),
                               ],
