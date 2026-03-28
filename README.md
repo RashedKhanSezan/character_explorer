@@ -46,14 +46,14 @@ flutter pub run build_runner build --delete-conflicting-outputs
 
 ## 🔗 Screenshots
 <p align="center">
-<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot01.png" width="30%" />
-<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot02.png" width="30%" />
-<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot03.png" width="30%" />
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot01.png" width="20%" />
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot02.png" width="20%" />
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot03.png" width="20%" />
 </p>
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot04.png" width="22%" />
-<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot05.png" width="22%" />
-<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot06.png" width="22%" />
-<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot07.png" width="22%" />
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot04.png" width="20%" />
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot05.png" width="20%" />
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot06.png" width="20%" />
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot07.png" width="20%" />
 </p>
