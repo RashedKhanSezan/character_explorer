@@ -41,8 +41,7 @@ cd character_explorer
 flutter pub get
 
 ## Generate Hive Adapters
-Since the project uses hive_generator, run this to generate the .g.dart files:
-flutter pub run build_runner build --delete-conflicting-outputs
+To generate the .g.dart files: flutter pub run build_runner build --delete-conflicting-outputs
 
 ## 🔗 Screenshots
 <p align="center">
