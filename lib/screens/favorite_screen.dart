@@ -10,26 +10,13 @@ class FavoriteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<CharacterController>();
-
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        title: Obx(
-          () => Text(
-            controller.currentNavIndex.value == 1 ? "FAVORITES" : 'RICK',
-            style: TextStyle(fontWeight: FontWeight.w900, letterSpacing: 2),
-          ),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        centerTitle: true,
-      ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: RadialGradient(
             colors: [
-              Color.fromARGB(255, 4, 107, 126),
-              Color.fromARGB(255, 5, 10, 14),
+              Color.fromARGB(158, 2, 51, 59),
+              Color.fromARGB(76, 7, 132, 151),
             ],
             radius: 1.5,
           ),
@@ -38,13 +25,13 @@ class FavoriteScreen extends StatelessWidget {
           if (controller.favCharList.isEmpty) {
             return const Center(
               child: Text(
-                "No favorites yet, Rick!",
-                style: TextStyle(color: Colors.white54),
+                "No favorites yet, Rick!!!",
+                style: TextStyle(color: Colors.white54, fontSize: 18),
               ),
             );
           }
           return GridView.builder(
-            padding: const EdgeInsets.fromLTRB(10, 110, 10, 100),
+            padding: const EdgeInsets.fromLTRB(10, 120, 10, 10),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               mainAxisSpacing: 12,

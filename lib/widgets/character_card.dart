@@ -21,7 +21,7 @@ class CharacterCard extends StatelessWidget {
                 imageUrl: model.imagePath,
                 fit: BoxFit.cover,
                 placeholder: (context, url) => Shimmer.fromColors(
-                  baseColor: const Color.fromARGB(255, 116, 115, 115)!,
+                  baseColor: const Color.fromARGB(255, 116, 115, 115),
                   highlightColor: const Color.fromARGB(255, 187, 187, 187)!,
                   child: Container(color: Colors.black),
                 ),
