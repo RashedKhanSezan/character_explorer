@@ -31,29 +31,29 @@ Utilized **GetX** for its high-performance dependency injection and reactive sta
 
 ## 🚀 Setup Instructions
 
-# Clone the repository
+## Clone the repository
 git clone [https://github.com/your-username/character_explorer.git](https://github.com/your-username/character_explorer.git)
 
-# Navigate to project folder
+## Navigate to project folder
 cd character_explorer
 
-# Install dependencies
+## Install dependencies
 flutter pub get
 
-# Generate Hive Adapters
+## Generate Hive Adapters
 Since the project uses hive_generator, run this to generate the .g.dart files:
 flutter pub run build_runner build --delete-conflicting-outputs
 
 ## 🔗 Screenshots
 <p align="center">
-<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot01.png" width="24%" alt="Screenshot 1" />
-<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot02.png" width="24%" alt="Screenshot 2" />
-<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot03.png" width="24%" alt="Screenshot 3" />
-<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot04.png" width="24%" alt="Screenshot 4" />
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot01.png" width="30%" />
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot02.png" width="30%" />
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot03.png" width="30%" />
 </p>
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot05.png" width="24%" alt="Screenshot 5" />
-<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot06.png" width="24%" alt="Screenshot 6" />
-<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot07.png" width="24%" alt="Screenshot 7" />
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot04.png" width="22%" />
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot05.png" width="22%" />
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot06.png" width="22%" />
+<img src="https://raw.githubusercontent.com/RashedKhanSezan/character_explorer/main/assets/images/Screenshot07.png" width="22%" />
 </p>
