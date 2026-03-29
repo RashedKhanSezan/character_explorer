@@ -13,19 +13,16 @@ class CharacterController extends GetxController {
   bool hasMorePage = true;
   late ScrollController scrollController;
 
-
   var searchQuery = "".obs;
   var selectedStatus = "All".obs;
 
-
   List<CharacterModel> originalApiData = [];
-
 
   var currentNavIndex = 0.obs;
   final favCharList = <CharacterModel>[].obs;
 
   late Box<CharacterModel> characterBox;
-
+  late Box<int> favoriteBox;
 
   List<CharacterModel> get filteredCharacters {
     if (searchQuery.value.isEmpty && selectedStatus.value == "All") {
@@ -47,14 +44,13 @@ class CharacterController extends GetxController {
 
   @override
   void onInit() async {
-    scrollController = ScrollController()..addListener(_scrollListner);
-
-
+    scrollController = ScrollController()..addListener(_scrollListener);
     characterBox = Hive.box<CharacterModel>('characters');
-
+    favoriteBox = await Hive.openBox<int>('favorites');
 
     if (characterBox.isNotEmpty) {
       charlist.assignAll(characterBox.values.toList());
+      _loadFavoritesFromCache();
       isLoading(false);
     }
 
@@ -62,42 +58,37 @@ class CharacterController extends GetxController {
     super.onInit();
   }
 
+  void _loadFavoritesFromCache() {
+    final favIds = favoriteBox.values.toList();
+    final favorites = charlist
+        .where((char) => favIds.contains(char.id))
+        .toList();
+    favCharList.assignAll(favorites);
+  }
 
   void updateCharacter(CharacterModel updatedModel) {
-
     characterBox.put(updatedModel.id, updatedModel);
-
 
     int mainIndex = charlist.indexWhere((item) => item.id == updatedModel.id);
     if (mainIndex != -1) charlist[mainIndex] = updatedModel;
-
 
     int favIndex = favCharList.indexWhere((item) => item.id == updatedModel.id);
     if (favIndex != -1) {
       favCharList[favIndex] = updatedModel;
       favCharList.refresh();
     }
-
     charlist.refresh();
   }
 
   void resetToDefault(String idString) {
     try {
-  
       int id = int.parse(idString);
-
-
       final original = originalApiData.firstWhere((c) => c.id == id);
-
-  
       final index = charlist.indexWhere((c) => c.id == id);
 
       if (index != -1) {
         final revertedModel = original.copyWith();
-
         charlist[index] = revertedModel;
-
-      
         characterBox.put(id, revertedModel);
 
         int favIndex = favCharList.indexWhere((item) => item.id == id);
@@ -105,14 +96,13 @@ class CharacterController extends GetxController {
           favCharList[favIndex] = revertedModel;
           favCharList.refresh();
         }
-
         charlist.refresh();
       }
     } catch (e) {
       debugPrint("Reset Error: $e");
       Get.snackbar(
         "Notice",
-        "Original API data not found in memory.",
+        "Original API data not found. Try refreshing.",
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.white10,
         colorText: Colors.white,
@@ -120,17 +110,18 @@ class CharacterController extends GetxController {
     }
   }
 
-
   void toggleFavorite(CharacterModel model) {
-    if (favCharList.any((item) => item.id == model.id)) {
+    if (favoriteBox.containsKey(model.id)) {
+      favoriteBox.delete(model.id);
       favCharList.removeWhere((item) => item.id == model.id);
     } else {
+      favoriteBox.put(model.id, model.id);
       favCharList.add(model);
     }
   }
 
   bool isFavorite(int id) {
-    return favCharList.any((item) => item.id == id);
+    return favoriteBox.containsKey(id);
   }
 
   @override
@@ -139,7 +130,7 @@ class CharacterController extends GetxController {
     super.onClose();
   }
 
-  void _scrollListner() {
+  void _scrollListener() {
     if (scrollController.position.pixels >=
         scrollController.position.maxScrollExtent - 200) {
       if (!isPaginating.value && hasMorePage) {
@@ -147,7 +138,6 @@ class CharacterController extends GetxController {
       }
     }
   }
-
 
   void fetchData() async {
     try {
@@ -157,10 +147,7 @@ class CharacterController extends GetxController {
       );
 
       if (response.statusCode == 200) {
-        var charData = response.data;
-        var allChar = CharacterData.fromJson(charData);
-
-
+        var allChar = CharacterData.fromJson(response.data);
         originalApiData = allChar.allCharacter;
 
         for (var char in allChar.allCharacter) {
@@ -170,10 +157,13 @@ class CharacterController extends GetxController {
         }
 
         charlist.assignAll(characterBox.values.toList());
+        _loadFavoritesFromCache();
       }
     } on DioException catch (e) {
-      String errormsg = e.response?.data['error'] ?? "Connection error";
-      Get.snackbar('Something Wrong', errormsg);
+      Get.snackbar(
+        'Something Wrong',
+        e.response?.data['error'] ?? "Connection error",
+      );
     } finally {
       isLoading(false);
     }
@@ -188,10 +178,7 @@ class CharacterController extends GetxController {
       );
 
       if (response.statusCode == 200) {
-        var nextcharData = response.data;
-        var nextAllchar = CharacterData.fromJson(nextcharData);
-
-
+        var nextAllchar = CharacterData.fromJson(response.data);
         originalApiData.addAll(nextAllchar.allCharacter);
 
         for (var char in nextAllchar.allCharacter) {
@@ -199,9 +186,11 @@ class CharacterController extends GetxController {
             characterBox.put(char.id, char);
           }
         }
-        charlist.addAll(nextAllchar.allCharacter);
 
-        hasMorePage = nextcharData['info']['next'] != null;
+        final uniqueList = characterBox.values.toList();
+        charlist.assignAll(uniqueList);
+
+        hasMorePage = response.data['info']['next'] != null;
       }
     } on DioException catch (error) {
       currentpage--;

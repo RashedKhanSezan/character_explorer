@@ -26,5 +26,5 @@ class StatusIndicator extends StatelessWidget {
         ),
       ),
     );
-  }
+  } 
 }

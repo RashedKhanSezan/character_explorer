@@ -1,22 +1,28 @@
 import 'package:hive/hive.dart';
 
-part 'character_model.g.dart'; 
+part 'character_model.g.dart';
 
 @HiveType(typeId: 1)
-enum Status { 
-  @HiveField(0) alive, 
-  @HiveField(1) dead, 
-  @HiveField(2) unknown 
+enum Status {
+  @HiveField(0)
+  alive,
+  @HiveField(1)
+  dead,
+  @HiveField(2)
+  unknown,
 }
 
 @HiveType(typeId: 2)
-enum Gender { 
-  @HiveField(0) male, 
-  @HiveField(1) female, 
-  @HiveField(2) genderless, 
-  @HiveField(3) unknown 
+enum Gender {
+  @HiveField(0)
+  male,
+  @HiveField(1)
+  female,
+  @HiveField(2)
+  genderless,
+  @HiveField(3)
+  unknown,
 }
-
 
 class CharacterData {
   final int count;
@@ -44,16 +50,25 @@ class CharacterData {
 }
 
 @HiveType(typeId: 0)
-class CharacterModel {
-  @HiveField(0) final int id;
-  @HiveField(1) final String name;
-  @HiveField(2) final Gender gender;
-  @HiveField(3) final String species;
-  @HiveField(4) final Status status;
-  @HiveField(5) final String type;
-  @HiveField(6) final String imagePath;
-  @HiveField(7) final Map<String, dynamic> origin;
-  @HiveField(8) final Map<String, dynamic> location;
+class CharacterModel extends HiveObject {
+  @HiveField(0)
+  final int id;
+  @HiveField(1)
+  final String name;
+  @HiveField(2)
+  final Gender gender;
+  @HiveField(3)
+  final String species;
+  @HiveField(4)
+  final Status status;
+  @HiveField(5)
+  final String type;
+  @HiveField(6)
+  final String imagePath;
+  @HiveField(7)
+  final Map<dynamic, dynamic> origin;
+  @HiveField(8)
+  final Map<dynamic, dynamic> location;
 
   CharacterModel({
     required this.id,
@@ -105,7 +120,9 @@ class CharacterModel {
       species: species ?? this.species,
       type: type ?? this.type,
       origin: originName != null ? {...origin, 'name': originName} : origin,
-      location: locationName != null ? {...location, 'name': locationName} : location,
+      location: locationName != null
+          ? {...location, 'name': locationName}
+          : location,
     );
   }
-} 
+}
