@@ -47,17 +47,19 @@ class CharacterDetailScreen extends StatelessWidget {
               size: 30,
             ),
           ),
-          Obx(() {
-            bool isFav = controller.isFavorite(model.id);
-            return IconButton(
-              onPressed: () => controller.toggleFavorite(model),
+          Obx(
+            () => IconButton(
               icon: Icon(
-                isFav ? Icons.favorite_rounded : Icons.favorite_border_rounded,
-                color: isFav ? Colors.redAccent : Colors.white,
-                size: 30,
+                controller.isFavorite(model.id)
+                    ? Icons.favorite
+                    : Icons.favorite_border,
+                color: controller.isFavorite(model.id)
+                    ? Colors.red
+                    : Colors.white,
               ),
-            );
-          }),
+              onPressed: () => controller.toggleFavorite(model),
+            ),
+          ),
         ],
       ),
       body: Obx(() {

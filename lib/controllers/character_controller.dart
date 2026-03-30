@@ -115,13 +115,16 @@ class CharacterController extends GetxController {
       favoriteBox.delete(model.id);
       favCharList.removeWhere((item) => item.id == model.id);
     } else {
-      favoriteBox.put(model.id, model.id);
+     
       favCharList.add(model);
+      favoriteBox.put(model.id, model.id);
     }
+    favCharList.refresh(); 
   }
 
   bool isFavorite(int id) {
-    return favoriteBox.containsKey(id);
+    
+    return favCharList.any((char) => char.id == id);
   }
 
   @override
